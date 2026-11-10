@@ -84,7 +84,8 @@ select option{background:var(--card);color:var(--fg)}
 }
 @media (prefers-reduced-motion:reduce){header::after{animation:none}*{transition:none!important}}
 .demo{padding:20px 22px;border-radius:var(--r);background:var(--card);border:1px solid var(--border);margin-bottom:24px}
-.demo h2{font-size:24px;margin-bottom:8px}.demo p{color:var(--muted);margin:8px 0}.demo .btn{margin-top:6px}
+.demo h2{font-size:24px;margin-bottom:8px}.demo p{color:var(--muted);margin:8px 0}
+.demo .cta{display:flex;gap:10px;flex-wrap:wrap}.demo .btn.alt{background:transparent;border-color:var(--border);color:var(--fg)}
 .ph{flex:none;width:260px;max-width:100%;aspect-ratio:9/16;border-radius:22px;border:1px solid var(--border);position:relative;overflow:hidden;
 background:linear-gradient(160deg,#2b2b2b,#121212 55%,#3a2f00);display:flex;align-items:center;justify-content:center}
 .ph .hook{position:absolute;top:18px;left:12px;right:12px;background:var(--y);color:#0b0b0b;font:700 14px/1.2 "Space Grotesk",sans-serif;padding:8px;border-radius:8px;text-align:center}
@@ -103,7 +104,7 @@ background:linear-gradient(160deg,#2b2b2b,#121212 55%,#3a2f00);display:flex;alig
   </div>
 </header>
 <main>
-<div class="demo"><h2>Le tableau de bord de Clipora</h2><p>Voici à quoi ressemble Clipora Studio. Dans l'app, chaque clip prêt arrive ici : tu le regardes, tu modifies sa légende, tu choisis qui peut le voir, les interactions et la mention de contenu commercial, puis tu le publies sur <b>ton propre compte TikTok</b>, seulement quand tu cliques sur « Publier ».</p><p>Cette page est un aperçu : rien n'est publié depuis le site. Le vrai tableau de bord tourne sur ton ordinateur, avec l'app Clipora lancée. <a class="btn" href="http://127.0.0.1:3457/">Ouvrir Clipora sur mon ordinateur</a></p></div>
+<div class="demo"><h2>Le tableau de bord de Clipora</h2><p>Voici à quoi ressemble Clipora Studio. Dans l'app, chaque clip prêt arrive ici : tu le regardes, tu modifies sa légende, tu choisis qui peut le voir, les interactions et la mention de contenu commercial, puis tu le publies sur <b>ton propre compte TikTok</b>, seulement quand tu cliques sur « Publier ».</p><p>Cette page est un aperçu : rien n'est publié depuis le site. Le vrai tableau de bord tourne sur ton ordinateur, avec l'app Clipora lancée.</p><p class="cta"><a class="btn" href="http://127.0.0.1:3457/">Ouvrir Clipora sur mon ordinateur</a><a class="btn alt" href="/telecharger/">Télécharger l'app</a></p></div>
 <div class="card">
   <div class="ph" role="img" aria-label="Aperçu du clip"><span class="hook">LE MOMENT OÙ TOUT BASCULE</span><span class="play">▶</span><span class="sub">« …et là, personne ne s'y attendait »</span></div>
   <form id="f1" data-id="1" data-toolong="0" onsubmit="return false" onchange="update(1)">

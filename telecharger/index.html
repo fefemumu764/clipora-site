@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Télécharger Clipora</title>
+<meta name="description" content="Clipora pour Windows : bientôt disponible.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+:root{--bg:#0b0b0b;--card:#141414;--sec:#1f1f1f;--fg:#f4f2ec;--muted:#a8a69f;--y:#FFD600;--border:rgba(255,255,255,.1);--r:16px}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 Inter,system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;top:-220px;left:50%;width:900px;height:500px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,214,0,.16),transparent);filter:blur(40px);pointer-events:none;z-index:0}
+h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;letter-spacing:-.03em;margin:0}
+a{color:var(--y)}
+header{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(11,11,11,.72);border-bottom:1px solid var(--border)}
+.bar{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+.brand svg{width:36px;height:36px;flex:none}
+.brand b{font-family:"Space Grotesk",sans-serif;font-size:18px;letter-spacing:-.02em}
+.btn{font:600 14px/1 Inter,sans-serif;border-radius:999px;padding:12px 20px;border:1px solid transparent;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s}
+.btn-y{background:var(--y);color:#0b0b0b}.btn-y:hover{transform:scale(1.04)}
+.btn-o{border-color:var(--border);color:var(--fg)}.btn-o:hover{border-color:var(--y);color:var(--y)}
+.btn[aria-disabled=true]{background:var(--sec);color:var(--muted);cursor:not-allowed}
+main{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:48px 24px 64px}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--y);margin-bottom:12px}
+h1{font-size:clamp(32px,6vw,52px);line-height:1.05}
+.lead{color:var(--muted);font-size:17px;margin:16px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;margin-top:28px}
+.card h2{font-size:20px;margin-bottom:10px}
+.card ul{margin:0;padding-left:20px;color:var(--muted)}.card li{margin:6px 0}.card li b{color:var(--fg)}
+footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px}
+footer .bar{justify-content:flex-start;gap:20px}
+footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--y)}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="16" fill="#FFD600"/><path d="M24 17 L48 32 L24 47 Z" fill="#0b0b0b" stroke="#0b0b0b" stroke-width="3" stroke-linejoin="round"/><path d="M16 46 L48 18" stroke="#FFD600" stroke-width="5" stroke-linecap="round"/></svg>
+      <b>Clipora</b>
+    </a>
+    <a class="btn btn-o" href="/dashboard/">Tableau de bord</a>
+  </div>
+</header>
+<main>
+  <span class="tag">Clipora pour Windows</span>
+  <h1>Télécharger Clipora : bientôt disponible</h1>
+  <p class="lead">Clipora est en cours de finalisation. L'application sera proposée au téléchargement dès qu'elle sera prête pour tout le monde. Laisse-nous ton adresse et on te prévient à la sortie.</p>
+  <div class="cta">
+    <span class="btn" aria-disabled="true">Télécharger pour Windows (bientôt)</span>
+    <a class="btn btn-y" href="mailto:contact@clipora.website?subject=Pr%C3%A9venez-moi%20%C3%A0%20la%20sortie%20de%20Clipora">Me prévenir à la sortie</a>
+  </div>
+
+  <div class="card">
+    <h2>Ce que fera l'application</h2>
+    <ul>
+      <li>Récupère les vidéos des campagnes de clipping que tu rejoins.</li>
+      <li>Repère les meilleurs moments et prépare des clips verticaux sous-titrés.</li>
+      <li>Applique les règles de chaque campagne : mentions, hashtags, mention de partenariat.</li>
+      <li>Te laisse vérifier chaque clip dans le <a href="/dashboard/">tableau de bord</a>, puis le publie sur <b>ton propre compte TikTok</b>, seulement quand tu cliques sur « Publier ».</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Configuration recommandée</h2>
+    <ul>
+      <li><b>Windows 10 ou 11</b>, 64 bits.</li>
+      <li><b>Carte graphique NVIDIA</b> recommandée pour la transcription et l'analyse des vidéos.</li>
+      <li><b>16 Go de mémoire</b> et une vingtaine de Go d'espace disque libre.</li>
+      <li>Une connexion Internet et un compte TikTok.</li>
+    </ul>
+  </div>
+</main>
+<footer>
+  <div class="bar">
+    <a href="/terms">Conditions d'utilisation</a>
+    <a href="/privacy">Politique de confidentialité</a>
+    <a href="mailto:contact@clipora.website">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
