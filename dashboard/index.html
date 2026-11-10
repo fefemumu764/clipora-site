@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tableau de bord · Clipora</title>
+<meta name="description" content="Aperçu du tableau de bord Clipora Studio.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- Design : Lovable (projet Clipora, studio/studio-template.html). Jetons remplacés par clipper/studio.py. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+:root{--bg:#0b0b0b;--card:#141414;--sec:#1f1f1f;--fg:#f4f2ec;--muted:#a8a69f;--y:#FFD600;--border:rgba(255,255,255,.1);--input:rgba(255,255,255,.15);--r:16px}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 Inter,system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;top:-220px;left:50%;width:900px;height:500px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,214,0,.16),transparent);filter:blur(40px);pointer-events:none;z-index:0}
+h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;letter-spacing:-.03em;margin:0}
+a{color:var(--y)}
+header{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(11,11,11,.72);border-bottom:1px solid var(--border)}
+header::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:30%;background:linear-gradient(90deg,var(--y),transparent);animation:run 4s ease-in-out infinite}
+@keyframes run{0%{width:0}70%{width:100%}100%{width:100%;opacity:0}}
+.bar{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+.brand svg{width:36px;height:36px;flex:none}
+.brand b{font-family:"Space Grotesk",sans-serif;font-size:18px;letter-spacing:-.02em}
+.brand small{display:block;color:var(--muted);font-size:12px;line-height:1.2}
+.acc{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.acc b{color:var(--fg)}
+.acc img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--y)}
+.btn,button{font:600 14px/1 Inter,sans-serif;border-radius:999px;padding:12px 20px;cursor:pointer;border:1px solid transparent;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,box-shadow .15s,background .15s,opacity .15s}
+.btn,.pub{background:var(--y);color:#0b0b0b;box-shadow:0 0 24px rgba(255,214,0,.25)}
+.btn:hover,.pub:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 0 32px rgba(255,214,0,.4)}
+.btn-sm{padding:8px 14px;font-size:13px;background:transparent;color:var(--fg);border-color:var(--input);box-shadow:none}
+.btn-sm:hover{border-color:var(--y);box-shadow:none}
+.ok{background:var(--sec);color:var(--fg);border-color:var(--input)}
+.ok:hover:not(:disabled){border-color:var(--y)}
+button:disabled{opacity:.35;cursor:not-allowed;box-shadow:none;transform:none;filter:grayscale(1)}
+button:focus-visible,.btn:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--y);outline-offset:2px}
+main{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:28px 24px 64px}
+.intro{color:var(--muted);margin:0 0 20px;font-size:15px}
+.empty{text-align:center;padding:72px 24px;border-radius:24px;border:1px dashed var(--input);background:var(--card)}
+.empty h2{font-size:26px;margin-bottom:8px}
+.empty p{color:var(--muted);margin:0}
+.card{display:flex;gap:28px;padding:22px;margin-bottom:22px;border-radius:24px;border:1px solid transparent;
+  background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(145deg,rgba(255,214,0,.45),rgba(255,255,255,.06) 40%,rgba(255,255,255,.04) 70%,rgba(255,214,0,.2)) border-box}
+.card video{width:260px;flex:none;aspect-ratio:9/16;object-fit:cover;background:#000;border-radius:28px;border:6px solid var(--sec);box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.card form{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px}
+.card h3{font-size:22px;line-height:1.2}
+.meta{color:var(--muted);font-size:13px;margin-top:-8px}
+.lbl{font-weight:600;font-size:13px;display:block;margin-bottom:6px}
+textarea{width:100%;min-height:96px;resize:vertical;background:var(--bg);color:var(--fg);border:1px solid var(--input);border-radius:12px;padding:12px;font:14px/1.5 Inter,sans-serif}
+textarea:focus{border-color:var(--y);outline:none}
+select{appearance:none;-webkit-appearance:none;background:var(--sec) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FFD600' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 16px center;color:var(--fg);border:1px solid var(--input);border-radius:999px;padding:10px 42px 10px 18px;font:500 14px Inter,sans-serif;cursor:pointer;min-width:220px}
+select:invalid{color:var(--muted);border-color:rgba(255,214,0,.5)}
+select option{background:var(--card);color:var(--fg)}
+.toggles{display:flex;flex-direction:column;gap:10px}
+.tg{display:flex;align-items:center;gap:12px;cursor:pointer;font-size:14px}
+.tg input{appearance:none;-webkit-appearance:none;flex:none;width:40px;height:22px;border-radius:999px;background:var(--sec);border:1px solid var(--input);position:relative;cursor:pointer;margin:0;transition:background .2s}
+.tg input::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:transform .2s,background .2s}
+.tg input:checked{background:var(--y);border-color:var(--y)}
+.tg input:checked::after{transform:translateX(18px);background:#0b0b0b}
+.tg input:disabled{opacity:.4;cursor:not-allowed}
+.tg:has(input:disabled){cursor:not-allowed;color:var(--muted)}
+.off{color:var(--muted);font-size:12px}
+.branded{padding:14px;border-radius:14px;background:rgba(255,214,0,.06);border:1px solid rgba(255,214,0,.35)}
+.branded .tg{align-items:flex-start}
+.branded .tg input{margin-top:2px}
+.bc{margin-top:10px;font-size:13px;color:var(--y);display:flex;flex-direction:column;gap:6px}
+.note{font-weight:600}
+.warn{color:#ff6b6b;font-size:13px;margin:4px 0}
+.consent{font-size:12px;color:var(--muted);margin:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.msg{font-size:14px;min-height:1.2em}
+.msg:empty{display:none}
+.msg{padding:10px 14px;border-radius:12px;background:var(--sec);border-left:3px solid var(--y)}
+@media (max-width:760px){
+  .card{flex-direction:column;align-items:center;padding:16px}
+  .card form{width:100%}
+  .card video{width:min(260px,100%)}
+  select{width:100%}
+  .actions button{flex:1}
+}
+@media (prefers-reduced-motion:reduce){header::after{animation:none}*{transition:none!important}}
+.demo{padding:20px 22px;border-radius:var(--r);background:var(--card);border:1px solid var(--border);margin-bottom:24px}
+.demo h2{font-size:24px;margin-bottom:8px}.demo p{color:var(--muted);margin:8px 0}.demo .btn{margin-top:6px}
+.ph{flex:none;width:260px;max-width:100%;aspect-ratio:9/16;border-radius:22px;border:1px solid var(--border);position:relative;overflow:hidden;
+background:linear-gradient(160deg,#2b2b2b,#121212 55%,#3a2f00);display:flex;align-items:center;justify-content:center}
+.ph .hook{position:absolute;top:18px;left:12px;right:12px;background:var(--y);color:#0b0b0b;font:700 14px/1.2 "Space Grotesk",sans-serif;padding:8px;border-radius:8px;text-align:center}
+.ph .play{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:22px}
+.ph .sub{position:absolute;bottom:60px;left:14px;right:14px;text-align:center;font-weight:700;text-shadow:0 2px 6px #000}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="16" fill="#FFD600"/><path d="M24 17 L48 32 L24 47 Z" fill="#0b0b0b" stroke="#0b0b0b" stroke-width="3" stroke-linejoin="round"/><path d="M16 46 L48 18" stroke="#FFD600" stroke-width="5" stroke-linecap="round"/></svg>
+      <span><b>Clipora Studio</b><small>clips de campagnes → TikTok</small></span>
+    </a>
+    <span class="acc"><span>Aperçu · connecté : <b>@ton_compte</b></span><a class="btn btn-sm" href="http://127.0.0.1:3457/" title="L'app Clipora doit être lancée sur ton ordinateur">Ouvrir Clipora sur mon ordinateur</a></span>
+  </div>
+</header>
+<main>
+<div class="demo"><h2>Le tableau de bord de Clipora</h2><p>Voici à quoi ressemble Clipora Studio. Dans l'app, chaque clip prêt arrive ici : tu le regardes, tu modifies sa légende, tu choisis qui peut le voir, les interactions et la mention de contenu commercial, puis tu le publies sur <b>ton propre compte TikTok</b>, seulement quand tu cliques sur « Publier ».</p><p>Cette page est un aperçu : rien n'est publié depuis le site. Le vrai tableau de bord tourne sur ton ordinateur, avec l'app Clipora lancée. <a class="btn" href="http://127.0.0.1:3457/">Ouvrir Clipora sur mon ordinateur</a></p></div>
+<div class="card">
+  <div class="ph" role="img" aria-label="Aperçu du clip"><span class="hook">LE MOMENT OÙ TOUT BASCULE</span><span class="play">▶</span><span class="sub">« …et là, personne ne s'y attendait »</span></div>
+  <form id="f1" data-id="1" data-toolong="0" onsubmit="return false" onchange="update(1)">
+    <h3>Exemple : le moment fort de l&#x27;épisode</h3>
+    <p class="meta">Campagne : Campagne d&#x27;exemple · 34 s</p>
+    <div><label class="lbl" for="c1">Légende</label>
+      <textarea id="c1" name="caption">Le moment où tout bascule 😳
+
+Clip de @createur · vidéo complète sur sa chaîne
+#clip #podcast Collaboration commerciale</textarea></div>
+    <div><label class="lbl" for="p1">Qui peut voir cette vidéo ?</label>
+      <select id="p1" name="privacy" required><option value="" selected disabled>Choisir…</option><option value="PUBLIC_TO_EVERYONE">Tout le monde</option><option value="MUTUAL_FOLLOW_FRIENDS">Amis</option><option value="FOLLOWER_OF_CREATOR">Abonnés</option><option value="SELF_ONLY">Moi uniquement</option></select></div>
+    <div class="toggles"><label class="tg"><input type="checkbox" name="comment" > Autoriser les commentaires</label>
+      <label class="tg"><input type="checkbox" name="duet" > Autoriser le duo</label><label class="tg"><input type="checkbox" name="stitch" > Autoriser le stitch</label></div>
+    <div class="branded">
+      <label class="tg"><input type="checkbox" name="disclose"> Déclarer un contenu commercial : cette vidéo fait la promotion de toi-même, d'une marque, d'un produit ou d'un service</label>
+      <div id="bc1" class="bc" style="display:none">
+        <label class="tg"><input type="checkbox" name="organic"> Ta marque : tu fais la promotion de toi-même ou de ton activité</label>
+        <label class="tg"><input type="checkbox" name="branded"> Contenu de marque : tu fais la promotion d'une autre marque ou d'un tiers</label>
+        <div id="lb1" class="note"></div>
+      </div>
+    </div>
+    <p class="consent" id="cs1"></p>
+    <div class="actions">
+      <button class="pub" onclick="send(1,'publish')">Publier maintenant</button>
+      <button class="ok" onclick="send(1,'approve')">Valider pour le planning</button>
+    </div>
+    <div class="msg" id="m1"></div>
+  </form>
+</div>
+</main>
+<script>
+function update(id){
+  const f=document.getElementById('f'+id), priv=f.privacy, disc=f.disclose.checked;
+  if(priv.value==='SELF_ONLY'){ f.branded.checked=false; }
+  f.branded.disabled = priv.value==='SELF_ONLY';
+  f.branded.parentElement.title = f.branded.disabled ? "Un contenu de marque ne peut pas être en « Moi uniquement »." : '';
+  const branded=disc && f.branded.checked, organic=disc && f.organic.checked;
+  for(const o of priv.options){ if(o.value==='SELF_ONLY'){ o.disabled=branded; o.title = branded ? "Un contenu de marque ne peut pas être en « Moi uniquement »." : ''; } }
+  document.getElementById('bc'+id).style.display = disc ? 'block' : 'none';
+  document.getElementById('lb'+id).textContent = branded ? "Ta vidéo sera étiquetée « Partenariat rémunéré »."
+    : organic ? "Ta vidéo sera étiquetée « Contenu promotionnel »." : '';
+  const music='<a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank" rel="noopener">Confirmation d\'utilisation de la musique</a>';
+  const bc='<a href="https://www.tiktok.com/legal/page/global/bc-policy/en" target="_blank" rel="noopener">Politique relative au contenu de marque</a>';
+  document.getElementById('cs'+id).innerHTML = branded ? 'En publiant, tu acceptes la '+bc+' et la '+music+' de TikTok.'
+    : 'En publiant, tu acceptes la '+music+' de TikTok.';
+  const missing = disc && !branded && !organic;
+  f.querySelectorAll('button').forEach(b=>{
+    b.disabled = priv.value==='' || missing || (b.classList.contains('pub') && f.dataset.toolong==='1');
+    b.title = missing ? "Indique si ton contenu fait la promotion de toi-même, d'un tiers, ou des deux." : '';
+  });
+}
+async function send(id, action){ document.getElementById('m'+id).innerHTML = 'Aperçu : rien n\'est publié depuis le site. Pour publier, <a href="http://127.0.0.1:3457/">ouvre Clipora sur ton ordinateur</a>.'; return;  const f=document.getElementById('f'+id), m=document.getElementById('m'+id); f.querySelectorAll('button').forEach(b=>b.disabled=true); m.textContent = action==='publish' ? 'Publication en cours… (le traitement par TikTok peut prendre quelques minutes)' : 'Enregistrement…'; const data={action, caption:f.caption.value, privacy:f.privacy.value, comment:f.comment.checked, duet:f.duet.checked, stitch:f.stitch.checked, disclose:f.disclose.checked, organic:f.organic.checked, branded:f.branded.checked}; const r=await fetch('/clip/'+id,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}); const j=await r.json(); m.innerHTML=j.message; if(!j.ok) update(id); }
+document.querySelectorAll('form[data-id]').forEach(f=>update(f.dataset.id));
+</script>
+</body>
+</html>
